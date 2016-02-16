@@ -12,14 +12,13 @@ extension Hero {
         var itemList = [UDItem]()
         
         for item: UDItem in inventory{
-            for key in item.historicalData{
-                // Unwrap object data
-                if key.1 as? String == planet{
+            if let validItem = item.historicalData["PlanetOfOrigin"]{
+                if(validItem as! String == planet){
                     itemList.append(item)
                     print("Appending: ", item)
                 }
                 else{
-                    print(key.1, " does not match ", planet)
+                    print("Missing PlanetOfOrigin key!!")
                 }
             }
         }
