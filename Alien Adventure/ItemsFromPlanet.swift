@@ -11,6 +11,7 @@ extension Hero {
     func itemsFromPlanet(inventory: [UDItem], planet: String) -> [UDItem] {
         var itemList = [UDItem]()
         
+        // Add all items from "planet" to itemList
         for item: UDItem in inventory{
             if let validItem = item.historicalData["PlanetOfOrigin"]{
                 if(validItem as! String == planet){
