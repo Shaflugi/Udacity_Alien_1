@@ -11,14 +11,27 @@ extension Hero {
     func oldestItemFromPlanet(inventory: [UDItem], planet: String) -> UDItem? {
         
         let validItems = itemsFromPlanet(inventory, planet: planet)
-       // print(validItems)
-        for item:UDItem in validItems{
-            print("carbonage: ", item.historicalData["CarbonAge"])
-          
+        var oldestItem: UDItem
+        
+        // No items? Break out early and return nothingess.
+        if validItems.count == 0 {
+            return nil
         }
-        return nil
+        
+        // Initialize oldestItem with some data.
+        oldestItem = validItems[0]
+        
+        // Loop through each item to determine
+        // which is the oldest
+        for item:UDItem in validItems {
+            if let carbonAge = item.historicalData["CarbonAge"] {
+                if let oldestAge = oldestItem.historicalData["CarbonAge"]{
+                    if carbonAge as! Int > oldestAge as! Int {
+                        oldestItem = item
+                    }
+                }
+            }
+        }
+        return oldestItem
     }
-    
 }
-
-// If you have completed this function and it is working correctly, feel free to skip this part of the adventure by opening the "Under the Hood" folder, and making the following change in Settings.swift: "static var RequestsToSkip = 2"

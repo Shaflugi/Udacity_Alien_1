@@ -15,11 +15,10 @@ extension Hero {
             if let validItem = item.historicalData["PlanetOfOrigin"]{
                 if(validItem as! String == planet){
                     itemList.append(item)
-                    print("Appending: ", item)
                 }
-                else{
-                    print("Missing PlanetOfOrigin key!!")
-                }
+            }
+            else{
+                print("Missing PlanetOfOrigin key!!")
             }
         }
         return itemList
