@@ -9,6 +9,19 @@
 import Foundation
 
 func <(lhs: UDItem, rhs: UDItem) -> Bool {
+    
+    // Rarity value is less? Obviously less rare
+    if lhs.rarity.rawValue > rhs.rarity.rawValue{
+        return false
+    }
+    
+    // Base value is less? Also less rare
+    if lhs.baseValue > rhs.baseValue{
+        return false
+    }
+    
+    // We've determined that the left item is less rare
+    // than the right item. Woo!
     return true
 }
 
