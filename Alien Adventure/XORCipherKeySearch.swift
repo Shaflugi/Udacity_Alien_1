@@ -11,28 +11,25 @@ import Foundation
 extension Hero {
     
     func xorCipherKeySearch(encryptedString: [UInt8]) -> UInt8 {
-        
-        // NOTE: This code doesn't exactly mimic what is in the Lesson. We've
-        // added some print statements so that there are no warnings for 
-        // unused variables 😀.
         var key: UInt8
         key = 0
         
+        // Check every value between 0-255
         for x in UInt8.min..<UInt8.max {
-            
-            print(x)
             
             var decrypted: [UInt8]
             decrypted = [UInt8]()
             
+            // XOR the value of x against the characters in the encrypted string
             for character in encryptedString {
-                // ADD CODE: perform decryption
-                print(character)
+                decrypted.append(character ^ x)
             }
             
+            // Does our decrypted string say "udacity?"
+            // If so, great! We found the key for decryption.
             if let decryptedString = String(bytes: decrypted,
                 encoding: NSUTF8StringEncoding) where decryptedString == "udacity" {
-                    // ADD CODE: found match, now what?
+                    key = x
             }
         }
         
