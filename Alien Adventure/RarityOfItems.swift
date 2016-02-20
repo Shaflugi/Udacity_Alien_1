@@ -9,7 +9,33 @@
 extension Hero {
     
     func rarityOfItems(inventory: [UDItem]) -> [UDItemRarity:Int] {
-        return [UDItemRarity:Int]()
+        var rareList = [UDItemRarity:Int]()
+       
+        // Init dict (how to do this in a loop..?)
+        rareList[UDItemRarity.Common] = 0
+        rareList[UDItemRarity.Uncommon] = 0
+        rareList[UDItemRarity.Rare] = 0
+        rareList[UDItemRarity.Legendary] = 0
+
+        // Increment rarity values
+        for item in inventory{
+            switch(item.rarity){
+            case .Common:
+                print("common found")
+                rareList[UDItemRarity.Common]?++
+            case .Uncommon:
+                print("uncommon found")
+                rareList[UDItemRarity.Uncommon]?++
+            case .Rare:
+                print("Rare found")
+                rareList[UDItemRarity.Rare]?++
+            case.Legendary:
+                print("legendary found")
+                rareList[UDItemRarity.Legendary]?++
+            }
+        }
+
+        return rareList
     }
 }
 
