@@ -29,7 +29,7 @@ extension Hero {
                     if let history = key.objectForKey("HistoricalData") as? [String:AnyObject]{
                         // Loop through history dictionary
                         for hist_key in history {
-                            if hist_key.0 == "CarbonAge" && (hist_key.1 as! Int) > bannedAge{
+                            if hist_key.0 == "CarbonAge" && (hist_key.1 as! Int) < bannedAge{
                                 // Found a bannable item. Save the itemID!
                                 if let itemID = key.objectForKey("ItemID") as? Int{
                                     banList.append(itemID)
